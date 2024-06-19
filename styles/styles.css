@@ -384,6 +384,12 @@ main .section {
   padding: var(--spacing-large) var(--spacing-small);
 }
 
+@media (width <=768px) {
+  main .section {
+    overflow: hidden;
+  }
+}
+
 @media (width >=600px) {
   main .section {
     padding: var(--spacing-large) var(--spacing-big);
