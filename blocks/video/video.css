@@ -70,3 +70,21 @@
   top: 4px;
   left: 7px;
 }
+
+/*Custom css*/
+.section.video-container {
+  padding: 0;
+}
+
+.section.video-container .default-content-wrapper p {
+  display: none;
+}
+
+.section.video-container .video-wrapper {
+  max-width: inherit;
+}
+
+.section.video-container .video.block {
+  margin: 0 auto;
+  max-width: inherit;
+}
