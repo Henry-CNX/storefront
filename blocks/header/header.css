@@ -24,6 +24,12 @@ header nav {
   font-family: var(--type-base-font-family);
 }
 
+@media (width <= 600px) { 
+  header nav {
+    gap: initial;
+  }
+}
+
 header nav[aria-expanded='true'] {
   grid-template:
     'hamburger brand' var(--nav-height)
