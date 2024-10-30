@@ -3,6 +3,20 @@ function createHtmlSection(row, codeIndex) {
   code.dataset.codeIndex = codeIndex;
   var scriptText = "";
 
+  /* Use graphQL demo */
+  const apiKey = 'I9Se32B3bQUzWak93vX8A36WTVHTLxCa';
+  const resp   = await fetch(`http://api.giphy.com/v1/gifs/random?api_key=${ apiKey }`);
+  const { data } = await resp.json(); 
+
+  const { url } = data.images.original;
+
+  const img = document.createElement('img');
+        img.src = url;
+        document.body.append( img );
+
+  console.log("La img es: "+ url);
+  /* END: Use graphQL demo */
+
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     const codeBy = column.querySelectorAll('p');
     var allText = "";
