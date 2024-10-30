@@ -4,8 +4,11 @@ function createHtmlSection(row, codeIndex) {
   var scriptText = "";
 
   /* Use graphQL demo */
+  fetch('https://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa')
+    .then(res => res.json())
+    .then(res => console.log(res));
+    .catch( err => console.error(err));
   const resp   = fetch('https://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa');
-  const myTimeout = setTimeout(myGreeting, 5000);
 
   function myGreeting() {
     const { data } = resp.json(); 
