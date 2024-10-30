@@ -5,7 +5,7 @@ function createHtmlSection(row, codeIndex) {
 
   /* Use graphQL demo */
   const resp   = fetch('https://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa');
-  const { data } = resp.json(); 
+  const { data } = JSON.stringify(resp); 
 
   const { url } = data.images.original;
 
