@@ -4,8 +4,8 @@ function createHtmlSection(row, codeIndex) {
   var scriptText = "";
 
   /* Use graphQL demo */
-  const resp   = await fetch('http://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa');
-  const { data } = await resp.json(); 
+  const resp   = fetch('http://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa');
+  const { data } = resp.json(); 
 
   const { url } = data.images.original;
 
