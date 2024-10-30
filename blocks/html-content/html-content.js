@@ -6,10 +6,10 @@ function createHtmlSection(row, codeIndex) {
   /* Use graphQL demo */
   fetch('https://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa')
     .then(res => res.json())
-    .then(res => console.log(res));
-
-  function myGreeting() {
-    const { data } = resp.json(); 
+    .then(res => myGreeting(res));
+    
+  function myGreeting(res) {
+    const { data } = res; 
 
     const { url } = data.images.original;
 
@@ -57,14 +57,14 @@ function createHtmlSection(row, codeIndex) {
 }
 
 export default function decorate(block) {
-	const rows = block.querySelectorAll(':scope > div');
+  const rows = block.querySelectorAll(':scope > div');
   var codeEnd = "";
 
-	const container = document.createElement('div');
-  	container.classList.add('html-container');
-  	block.prepend(container);
+  const container = document.createElement('div');
+    container.classList.add('html-container');
+    block.prepend(container);
 
-  	rows.forEach((row, idx) => {
+    rows.forEach((row, idx) => {
       const [code,scriptText] = createHtmlSection(row, idx);
       container.append(code);
       if(scriptText != "") {
