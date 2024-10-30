@@ -5,13 +5,19 @@ function createHtmlSection(row, codeIndex) {
 
   /* Use graphQL demo */
   const resp   = fetch('https://api.giphy.com/v1/gifs/random?api_key=I9Se32B3bQUzWak93vX8A36WTVHTLxCa');
-  const { data } = JSON.stringify(resp); 
+  const myTimeout = setTimeout(myGreeting, 5000);
 
-  const { url } = data.images.original;
+  function myGreeting() {
+    const { data } = resp.json(); 
 
-  const img = document.createElement('img');
+    const { url } = data.images.original;
+
+    const img = document.createElement('img');
         img.src = url;
         document.body.append( img );
+  }
+
+
   /* END: Use graphQL demo */
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
