@@ -15,7 +15,7 @@ function createHtmlSection(row, codeIndex) {
 
     const img = document.createElement('img');
         img.src = url;
-        document.body.append( img );
+        //document.body.append( img );
   }
 
 
