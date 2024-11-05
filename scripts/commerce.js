@@ -101,7 +101,7 @@ ${priceFieldsFragment}`;
 
 export async function performCatalogServiceQuery(query, variables) {
   const headers = {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/graphql',
     'Magento-Environment-Id': await getConfigValue('commerce-environment-id'),
     'Magento-Website-Code': await getConfigValue('commerce-website-code'),
     'Magento-Store-View-Code': await getConfigValue('commerce-store-view-code'),
