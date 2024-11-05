@@ -108,6 +108,9 @@ export async function performCatalogServiceQuery(query, variables) {
     'Magento-Store-Code': await getConfigValue('commerce-store-code'),
     'Magento-Customer-Group': await getConfigValue('commerce-customer-group'),
     'x-api-key': await getConfigValue('commerce-x-api-key'),
+    'Access-Control-Allow-Origin: *',
+    'Access-Control-Allow-Methods: GET, POST',
+    'Access-Control-Allow-Headers: X-Requested-With',
   };
 
   const apiCall = new URL(await getConfigValue('commerce-endpoint'));
