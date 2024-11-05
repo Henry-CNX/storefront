@@ -110,7 +110,7 @@ export async function performCatalogServiceQuery(query, variables) {
     'x-api-key': await getConfigValue('commerce-x-api-key'),
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST',
-    'Access-Control-Allow-Headers': 'X-Requested-With',
+    'Access-Control-Allow-Headers': 'X-Requested-With'
   };
 
   const apiCall = new URL(await getConfigValue('commerce-endpoint'));
