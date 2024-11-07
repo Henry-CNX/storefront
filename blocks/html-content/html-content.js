@@ -71,8 +71,9 @@ export async function QueryDemo() {
     'x-api-key': await getConfigValue('commerce-x-api-key'),
   };
 
-  const apiCall = new URL(await getConfigValue('commerce-endpoint'));
-
+  //const apiCall = new URL(await getConfigValue('commerce-endpoint'));
+  const apiCall = 'https://graph.adobe.io/api/853fa0fa-0161-46dc-a982-0e347edc335f/graphql';
+  
   fetch(apiCall, {
     method: 'POST',
     headers,
