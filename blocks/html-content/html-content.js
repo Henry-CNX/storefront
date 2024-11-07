@@ -72,50 +72,19 @@ export async function QueryDemo() {
   };
 
   //const apiCall = new URL(await getConfigValue('commerce-endpoint'));
-  const apiCall = 'https://graph.adobe.io/api/853fa0fa-0161-46dc-a982-0e347edc335f/graphql';
+  const apiCall = new URL('https://graph.adobe.io/api/853fa0fa-0161-46dc-a982-0e347edc335f/graphql?api_key=4c7e1d994f9e43cca24591cff5c15018&query={country(id:%22US%22){id%20full_name_english}categories(filters:{name:{match:%22Coffe%22}}){items{name%20products(pageSize:25,currentPage:1){items{sku}}}}}');
   
   fetch(apiCall, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      query: `{
-          country (
-              id: "US"
-          ) {
-              id
-              full_name_english
-          }
-
-          categories(
-              filters: {
-                  name: {
-                      match: "Coffe"
-                  }
-              }
-          ) {
-              items {
-                  name
-                  products(
-                      pageSize: 20,
-                      currentPage: 1
-                  ) {
-                      items {
-                          sku
-                      }
-                  }
-              }
-          }
-      }`
-    })
+    method: 'GET',
+    headers
   })
     .then(res => res.json())
-    .then(res => console.log(res.data.characters.results));
+    .then(res => myGreeting(res));
     
-  function myResult(res) {
-    const { data } = res;
-  }
-
-  return data;
+        
+    function myGreeting(res) {
+      console.log( res );
+    }
 }
 
 
