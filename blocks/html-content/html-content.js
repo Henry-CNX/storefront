@@ -73,7 +73,7 @@ export async function QueryDemo() {
 
   const apiCall = new URL(await getConfigValue('commerce-endpoint'));
 
-  const response = await fetch(apiCall, {
+  fetch(apiCall, {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -106,15 +106,15 @@ export async function QueryDemo() {
           }
       }`
     })
-  });
-
-  if (!response.ok) {
-    return null;
+  })
+    .then(res => res.json())
+    .then(res => myResult(res));
+    
+  function myResult(res) {
+    const { data } = res;
   }
 
-  const queryResponse = await response.json();
-
-  return queryResponse.data;
+  return data;
 }
 
 
