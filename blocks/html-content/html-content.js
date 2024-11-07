@@ -109,7 +109,7 @@ export async function QueryDemo() {
     })
   })
     .then(res => res.json())
-    .then(res => myResult(res));
+    .then(res => console.log(res.data.characters.results));
     
   function myResult(res) {
     const { data } = res;
