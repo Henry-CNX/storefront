@@ -76,11 +76,8 @@ export async function QueryDemo() {
   const response = await fetch(apiCall, {
     method: 'POST',
     headers,
-  },
-  body: JSON.stringify({
-    query: `
-      query {
-        
+    body: JSON.stringify({
+      query: `{
         country (
             id: "US"
         ) {
@@ -107,10 +104,9 @@ export async function QueryDemo() {
                 }
             }
         }
-
-      }
-    `
-  }));
+      }`
+    })
+  });
 
   if (!response.ok) {
     return null;
