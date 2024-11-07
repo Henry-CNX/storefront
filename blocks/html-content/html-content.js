@@ -1,3 +1,5 @@
+import { getConfigValue } from '../../scripts/configs.js';
+
 function createHtmlSection(row, codeIndex) {
   const code = document.createElement('div');
   code.dataset.codeIndex = codeIndex;
@@ -17,6 +19,8 @@ function createHtmlSection(row, codeIndex) {
         img.src = url;
         //document.body.append( img );
   }
+
+  QueryDemo();
 
 
   /* END: Use graphQL demo */
@@ -55,6 +59,68 @@ function createHtmlSection(row, codeIndex) {
 
   return [code,scriptText];
 }
+
+export async function QueryDemo() {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Magento-Environment-Id': await getConfigValue('commerce-environment-id'),
+    'Magento-Website-Code': await getConfigValue('commerce-website-code'),
+    'Magento-Store-View-Code': await getConfigValue('commerce-store-view-code'),
+    'Magento-Store-Code': await getConfigValue('commerce-store-code'),
+    'Magento-Customer-Group': await getConfigValue('commerce-customer-group'),
+    'x-api-key': await getConfigValue('commerce-x-api-key'),
+  };
+
+  const apiCall = new URL(await getConfigValue('commerce-endpoint'));
+
+  const response = await fetch(apiCall, {
+    method: 'POST',
+    headers,
+  },
+  body: JSON.stringify({
+    query: `
+      query {
+        
+        country (
+            id: "US"
+        ) {
+            id
+            full_name_english
+        }
+
+        categories(
+            filters: {
+                name: {
+                    match: "Coffe"
+                }
+            }
+        ) {
+            items {
+                name
+                products(
+                    pageSize: 20,
+                    currentPage: 1
+                ) {
+                    items {
+                        sku
+                    }
+                }
+            }
+        }
+
+      }
+    `
+  }));
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const queryResponse = await response.json();
+
+  return queryResponse.data;
+}
+
 
 export default function decorate(block) {
   const rows = block.querySelectorAll(':scope > div');
