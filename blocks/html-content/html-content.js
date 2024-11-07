@@ -78,32 +78,32 @@ export async function QueryDemo() {
     headers,
     body: JSON.stringify({
       query: `{
-        country (
-            id: "US"
-        ) {
-            id
-            full_name_english
-        }
+          country (
+              id: "US"
+          ) {
+              id
+              full_name_english
+          }
 
-        categories(
-            filters: {
-                name: {
-                    match: "Coffe"
-                }
-            }
-        ) {
-            items {
-                name
-                products(
-                    pageSize: 20,
-                    currentPage: 1
-                ) {
-                    items {
-                        sku
-                    }
-                }
-            }
-        }
+          categories(
+              filters: {
+                  name: {
+                      match: "Coffe"
+                  }
+              }
+          ) {
+              items {
+                  name
+                  products(
+                      pageSize: 20,
+                      currentPage: 1
+                  ) {
+                      items {
+                          sku
+                      }
+                  }
+              }
+          }
       }`
     })
   });
